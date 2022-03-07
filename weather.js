@@ -8,8 +8,18 @@ const fs = require("fs");
 const https = require("https");
 
 var PORT = process.env.port || 8080;
-var apiKey = fs.readFileSync('./apiKey').toString().trimEnd();
-console.log(apiKey);
+
+var apiKey = '';
+try{
+   apiKey = fs.readFileSync('./apiKey').toString().trimEnd();
+}
+catch (err) {
+   console.error(err)
+   console.log("There was a problem opening the 'apiKey' file. Make sure the file exists and the user has access to it.")
+   process.exit(1);
+}
+
+// console.log(apiKey);
 
 
 app.get('/', function(req, res) {
@@ -34,7 +44,8 @@ app.get('/', function(req, res) {
 
    }
    else{
-      res.send("TagId is set to " + req.params.zip);
+      res.status(400)
+      res.send(JSON.parse("{\"error\": \"invalid 5 digit zip code.\"}"));
    }
 });
 
