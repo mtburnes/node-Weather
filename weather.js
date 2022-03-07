@@ -13,9 +13,9 @@ console.log(apiKey);
 
 
 app.get('/', function(req, res) {
-   console.log(req.query);
+   // console.log(req.query);
    const zip = Number.parseInt(req.query.zip);
-   console.log("Zip Code received is: " + zip);
+   // console.log("Zip Code received is: " + zip);
    if(zip > 10000 && zip < 99999){ //simple test for zip code validation
 
       https.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},&appid=${apiKey}`, (response) =>{
@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
          });
 
          response.on('end', () => {
-            console.log(JSON.parse(responseText));
+            // console.log(JSON.parse(responseText));
             res.statusCode = JSON.parse(responseText).cod;
             res.json(JSON.parse(responseText));
          })
