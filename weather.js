@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
    // console.log("Zip Code received is: " + zip);
    if(zip > 10000 && zip < 99999){ //simple test for zip code validation
 
-      https.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},&appid=${apiKey}`, (response) =>{
+      https.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apiKey}&units=imperial`, (response) =>{
          let responseText = '';
 
          response.on('data', (chunk) => {
