@@ -18,9 +18,10 @@ Example:
 
 This project relies on Node and `npm`, so be sure that those are installed properly.
 
-Runnning this command will install all necessary dependencies to your project folder.
+Runnning this command will install all necessary dependencies to your project folder, as well as prompt you for your API key.
+
 ```
-npm install
+npm run start
 ```
 
 After this is done, create a file called apiKey, then place your [OpenWeatherMap API Key](https://home.openweathermap.org/api_keys) as it's only contents.
@@ -31,4 +32,4 @@ After this is done, create a file called apiKey, then place your [OpenWeatherMap
 node .\weather.js
 ```
 
-This will launch a node.js server on 8080. Browse to `http://localhost:8080` to see it in action.
+This will launch a node.js server on 8080. Browse to `http://localhost:8080/?zip=[yourzipcode]` to see it in action.
